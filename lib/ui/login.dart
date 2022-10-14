@@ -15,12 +15,12 @@ class _LoginState extends State<Login> {
         body: Container(
           child: Column(
             children: [
-              Text("Login"),
-              Align(
+              const Text("Login"),
+              const Align(
                 child: Text("Forgot Password"),
               ),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.blue,
                   borderRadius: BorderRadius.all(
                     Radius.circular(20.0),
