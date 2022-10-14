@@ -28,6 +28,12 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
+              TextFormField(
+                initialValue: "Enter Email",
+                decoration: InputDecoration(
+                  labelText: "Email",
+                ),
+              ),
               const Align(
                 alignment: Alignment.centerRight,
                 child: Text(
