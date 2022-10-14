@@ -13,20 +13,52 @@ class _LoginState extends State<Login> {
     return SafeArea(
       child: Scaffold(
         body: Container(
+          padding: const EdgeInsets.all(20.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const Text("Login"),
               const Align(
-                child: Text("Forgot Password"),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Login",
+                  style: TextStyle(
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+              ),
+              const Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  "Forgot Password",
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.blue,
+                  ),
+                ),
               ),
               Container(
+                height: 50,
+                width: MediaQuery.of(context).size.width / 0.3,
                 decoration: const BoxDecoration(
                   color: Colors.blue,
                   borderRadius: BorderRadius.all(
-                    Radius.circular(20.0),
+                    Radius.circular(15.0),
                   ),
                 ),
-                child: Text("Sign in"),
+                child: const Center(
+                  child: Text(
+                    "SIGN IN",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 0.5,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               )
             ],
           ),
