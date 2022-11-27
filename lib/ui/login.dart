@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:student_diary/ui/home_screen.dart';
+
+import 'home.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -8,68 +12,157 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  TextEditingController enrollController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Login",
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 0.5,
-                  ),
+        body: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Image.asset(
+                  'assets/svvv.png',
+                  fit: BoxFit.cover,
+                  height: MediaQuery.of(context).size.width / 1.5,
+                  width: MediaQuery.of(context).size.width / 1.5,
                 ),
-              ),
-              TextFormField(
-                initialValue: "Enter Email",
-                decoration: InputDecoration(
-                  labelText: "Email",
-                ),
-              ),
-              const Align(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  "Forgot Password",
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.blue,
-                  ),
-                ),
-              ),
-              Container(
-                height: 50,
-                width: MediaQuery.of(context).size.width / 0.3,
-                decoration: const BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(15.0),
-                  ),
-                ),
-                child: const Center(
+                const SizedBox(height: 30.0),
+                const Align(
+                  alignment: Alignment.center,
                   child: Text(
-                    "SIGN IN",
+                    "Login",
                     style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 40.0,
+                      fontFamily: 'Google Fonts',
+                      fontWeight: FontWeight.w700,
                       letterSpacing: 0.5,
-                      color: Colors.white,
                     ),
                   ),
                 ),
-              )
-            ],
+                const SizedBox(height: 20.0),
+                TextFormField(
+                  controller: enrollController,
+                  // initialValue: "Enter Email",
+                  decoration: const InputDecoration(
+                    labelText: "Enrollment number",
+                    border: OutlineInputBorder(),
+                    hintText: "Enter Enrollment number",
+                  ),
+                ),
+                const SizedBox(height: 20.0),
+                TextFormField(
+                  controller: passwordController,
+                  // initialValue: "Enter Email",
+                  decoration: const InputDecoration(
+                    labelText: "Password",
+                    border: OutlineInputBorder(),
+                    hintText: "Enter Password",
+                  ),
+                  obscureText: true,
+                ),
+                const SizedBox(height: 10.0),
+                const Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    "Forgot Password",
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 25.0),
+                GestureDetector(
+                  onTap: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: ((context) => const Home()),
+                    //   ),
+                    // );
+                    login();
+                  },
+                  child: Container(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width / 0.3,
+                    decoration: const BoxDecoration(
+                      color: Colors.pinkAccent,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15.0),
+                      ),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        "SIGN IN",
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 0.5,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 25.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("New to College?",
+                        style: GoogleFonts.roboto(
+                          textStyle: const TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        )),
+                    Text(
+                      " REGISTER",
+                      style: GoogleFonts.roboto(
+                        textStyle: const TextStyle(
+                            fontSize: 16.0,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
     );
+  }
+
+  void login() {
+    if (enrollController.text.isEmpty && passwordController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Enter Enrollment Number & Password")));
+    } else if (enrollController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Enter Enrollment Number")));
+    } else if (passwordController.text.isEmpty) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Enter Password")));
+    } else if (enrollController.text != "19100BTCSICS05464") {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Incorrect Enrollment Number")));
+    } else if (passwordController.text != "tanish") {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Incorrect Password")));
+    } else if (enrollController.text == "19100BTCSICS05464" &&
+        passwordController.text == "tanish") {
+      Navigator.push(context, MaterialPageRoute(builder: (_) => Home()));
+    }
+
+    // else {
+
+    // }
   }
 }
