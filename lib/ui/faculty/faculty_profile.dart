@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+class FacultyProfile extends StatefulWidget {
+  const FacultyProfile({super.key});
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<FacultyProfile> createState() => _FacultyProfileState();
 }
 
-class _ProfileState extends State<Profile> {
+class _FacultyProfileState extends State<FacultyProfile> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -83,7 +83,7 @@ class _ProfileState extends State<Profile> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
                               Text(
-                                "Enroll. Number",
+                                "Teacher ID",
                                 style: TextStyle(
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.w500,
@@ -126,6 +126,50 @@ class _ProfileState extends State<Profile> {
                           )
                         ],
                       ),
+                    ),
+                  ),
+                  const SizedBox(height: 40.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4.0),
+                            color: Colors.greenAccent,
+                          ),
+                          padding: const EdgeInsets.all(3.0),
+                          child: const Icon(
+                            Icons.home_filled,
+                            size: 12.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(width: 12.0),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              "Blood Group",
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            SizedBox(height: 1.0),
+                            Text(
+                              "B +ve",
+                              style: TextStyle(
+                                fontSize: 13.0,
+                                color: Colors.white54,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            )
+                          ],
+                        )
+                      ],
                     ),
                   ),
                   const SizedBox(height: 40.0),

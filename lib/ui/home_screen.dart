@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:student_diary/ui/attendance.dart';
+import 'package:student_diary/ui/faculty/home_faculty.dart';
 import 'package:student_diary/ui/marks.dart';
 import 'package:student_diary/ui/profile.dart';
 import 'package:percent_indicator/percent_indicator.dart';

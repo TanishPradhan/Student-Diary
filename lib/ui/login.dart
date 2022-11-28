@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:student_diary/ui/faculty/home_faculty.dart';
 import 'package:student_diary/ui/home_screen.dart';
 
 import 'home.dart';
@@ -21,7 +22,9 @@ class _LoginState extends State<Login> {
       child: Scaffold(
         body: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.all(20.0),
+            height: MediaQuery.of(context).size.height,
+            padding:
+                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -78,60 +81,65 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 const SizedBox(height: 25.0),
-                GestureDetector(
-                  onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: ((context) => const Home()),
-                    //   ),
-                    // );
-                    login();
-                  },
-                  child: Container(
-                    height: 50,
-                    width: MediaQuery.of(context).size.width / 0.3,
-                    decoration: const BoxDecoration(
-                      color: Colors.pinkAccent,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15.0),
-                      ),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        "SIGN IN",
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w500,
-                          letterSpacing: 0.5,
-                          color: Colors.white,
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: ((context) => const Home()),
+                        //   ),
+                        // );
+                        login();
+                      },
+                      child: Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width / 0.3,
+                        decoration: const BoxDecoration(
+                          color: Colors.pinkAccent,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(15.0),
+                          ),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            "SIGN IN",
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w500,
+                              letterSpacing: 0.5,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-                const SizedBox(height: 25.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("New to College?",
-                        style: GoogleFonts.roboto(
-                          textStyle: const TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.w500,
+                    const SizedBox(height: 10.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("New to College?",
+                            style: GoogleFonts.roboto(
+                              textStyle: const TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            )),
+                        Text(
+                          " REGISTER",
+                          style: GoogleFonts.roboto(
+                            textStyle: const TextStyle(
+                                fontSize: 16.0,
+                                color: Colors.blue,
+                                fontWeight: FontWeight.w500),
                           ),
-                        )),
-                    Text(
-                      " REGISTER",
-                      style: GoogleFonts.roboto(
-                        textStyle: const TextStyle(
-                            fontSize: 16.0,
-                            color: Colors.blue,
-                            fontWeight: FontWeight.w500),
-                      ),
+                        ),
+                      ],
                     ),
                   ],
-                )
+                ),
+                const SizedBox(height: 50.0),
               ],
             ),
           ),
@@ -153,12 +161,16 @@ class _LoginState extends State<Login> {
     } else if (enrollController.text != "19100BTCSICS05464") {
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Incorrect Enrollment Number")));
-    } else if (passwordController.text != "tanish") {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("Incorrect Password")));
     } else if (enrollController.text == "19100BTCSICS05464" &&
         passwordController.text == "tanish") {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => Home()));
+      Navigator.push(context, MaterialPageRoute(builder: (_) => const Home()));
+    } else if (enrollController.text == "19100BTCSICS05464" &&
+        passwordController.text == "faculty") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (_) => const FacultyHome()));
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Incorrect Password")));
     }
 
     // else {
